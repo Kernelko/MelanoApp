@@ -1,0 +1,10 @@
+{% if all_marks %}
+    <h1> This is list of marks</h1>
+    <ul>
+    {% for mark in all_marks %}
+    <li><a href="{% url 'pics:detail' mark.id %}"> {{ mark.ref }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h3>You don't have any marks added yet!</h3>
+{% endif %}

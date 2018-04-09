@@ -1,0 +1,24 @@
+<h1> Single skin mark</h1>
+
+<h2> {{ mark.ref }}</h2>
+<h3> {{mark.loc}}</h3>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'pics:cancerous' mark.id %}" method="post">
+    {% csrf_token %} 
+    {% for picture in mark.picture_file_set.all %}
+        <input type="radio" id="picture{{ forloop.counter }}" name="picture" value="{{ picture.id }}" />
+        <label for="picture{{ forloop.counter }}">
+            {{ picture.picture_date }}
+            {{ picture.is_cancer }}
+            {% if picture.is_cancer %}
+                <img src="https://i.imgur.com/TDj271k.png" />
+            {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Check if cancer">
+
+</form>
