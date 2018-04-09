@@ -1,3 +1,9 @@
+{% extends 'pics/base.html' %}
+{% block title %}
+Mark details
+{% endblock%}
+
+{% block body %}
 <h1> Single skin mark</h1>
 
 <h2> {{ mark.ref }}</h2>
@@ -22,3 +28,4 @@
     <input type="submit" value="Check if cancer">
 
 </form>
+{% endblock %}
