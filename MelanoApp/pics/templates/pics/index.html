@@ -1,3 +1,8 @@
+<!-- Loads the path to your static files -->
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'pics/style.css' %}" />
+
 {% if all_marks %}
     <h1> This is list of marks</h1>
     <ul>
