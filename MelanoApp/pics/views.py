@@ -19,6 +19,6 @@ def cancerous(request,mark_id):
         "error_message": "You did not select a valid picture",
         })
     else:
-        selected_picture.is_cancerous = True
+        selected_picture.is_cancer = True
         selected_picture.save()
         return render(request, 'pics/detail.html', {'mark': mark})
