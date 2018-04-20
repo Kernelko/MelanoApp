@@ -5,11 +5,8 @@ app_name = 'pics'
 
 urlpatterns = [
     #/pics/
-    url(r'^$', views.index, name="index"),
+    url(r'^$', views.IndexView.as_view(), name="index"),
 
     #/pics/<mark_id>/
-    url(r'^(?P<mark_id>[0-9]+)/$', views.detail,name='detail'),
-
-    #/pics/<mark_id>/cancerous
-    url(r'^(?P<mark_id>[0-9]+)/cancerous/$', views.cancerous,name='cancerous')
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(),name='detail')
 ]

@@ -1,12 +1,12 @@
-from django.shortcuts import render,get_object_or_404
-from .models import Mark, Picture_file
-# Create your views here.
+from django.views import generic
+from .models import Mark
 
-def index(request):
-    all_marks = Mark.objects.all()
-    return render(request, 'pics/index.html', { 'all_marks' : all_marks, })
+class IndexView(generic.ListView):
+    template_name="pics/index.html"
+    context_object_name = "all_marks"
+    def get_queryset(self):
+        return Mark.objects.all()
 
-def detail(request,mark_id):
-    mark =get_object_or_404(Mark, pk=mark_id)
-    return render(request, 'pics/detail.html', {'mark':mark})
-
+class DetailView(generic.DetailView):
+    model = Mark
+    template = "pics/detail.html"
