@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 #remember makemigrations (sqlmigrate pics 001 if you want to see SQL) and then migrate
 # Create your models here.
 class Mark(models.Model):
@@ -7,6 +7,9 @@ class Mark(models.Model):
     ref = models.CharField(max_length=250)
     loc= models.CharField(max_length=250)
     
+    def get_absolute_url(self):
+        return reverse('pics:detail', kwargs = {'pk': self.pk})
+
     def __str__(self):
         return self.ref+ ' located: ' + self.loc
 

@@ -1,4 +1,5 @@
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Mark
 
 class IndexView(generic.ListView):
@@ -8,5 +9,10 @@ class IndexView(generic.ListView):
         return Mark.objects.all()
 
 class DetailView(generic.DetailView):
+    
+    template_name = 'pics/detail.html'
     model = Mark
-    template = "pics/detail.html"
+
+class MarkCreate(CreateView):
+    model = Mark
+    fields = ['ref', 'loc']
