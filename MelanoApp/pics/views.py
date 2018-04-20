@@ -1,6 +1,7 @@
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Mark
+from django.urls import reverse_lazy
 
 class IndexView(generic.ListView):
     template_name="pics/index.html"
