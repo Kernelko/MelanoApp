@@ -10,15 +10,3 @@ def detail(request,mark_id):
     mark =get_object_or_404(Mark, pk=mark_id)
     return render(request, 'pics/detail.html', {'mark':mark})
 
-def cancerous(request,mark_id):
-    mark =get_object_or_404(Mark, pk=mark_id)
-    try:
-        selected_picture = mark.picture_file_set.get(pk=request.POST['picture'])
-    except (KeyError, Picture_file.DoesNotExist):
-        return render(request, 'pics/detail.html',{ 'mark': mark,
-        "error_message": "You did not select a valid picture",
-        })
-    else:
-        selected_picture.is_cancer = True
-        selected_picture.save()
-        return render(request, 'pics/detail.html', {'mark': mark})
