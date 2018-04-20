@@ -17,3 +17,11 @@ class DetailView(generic.DetailView):
 class MarkCreate(CreateView):
     model = Mark
     fields = ['ref', 'loc']
+
+class MarkUpdate(UpdateView):
+    model = Mark
+    fields = ['ref', 'loc']
+
+class MarkDelete(DeleteView):
+    model = Mark
+    success_url = reverse_lazy('pics:index')
