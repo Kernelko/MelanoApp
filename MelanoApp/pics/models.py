@@ -6,6 +6,7 @@ class Mark(models.Model):
     """single skin mark that will be observed"""
     ref = models.CharField(max_length=250)
     loc= models.CharField(max_length=250)
+    current_pic = models.FileField(null=True, blank=True)
     
     def get_absolute_url(self):
         return reverse('pics:detail', kwargs = {'pk': self.pk})
@@ -18,7 +19,7 @@ class Picture_file(models.Model):
     mark = models.ForeignKey(Mark, on_delete=models.CASCADE)
     file_type = models.CharField(max_length=10)
     picture_date= models.DateField()
-    #picture = models.ImageField()
+    picture_file = models.FileField(null=True, blank=True)
     is_cancer = models.BooleanField(default=False)
 
     def __str__(self):

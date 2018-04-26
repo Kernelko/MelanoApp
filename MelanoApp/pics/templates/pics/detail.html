@@ -13,6 +13,7 @@ Mark details
         <input type="radio" id="picture{{ forloop.counter }}" name="picture" value="{{ picture.id }}" />
         <label for="picture{{ forloop.counter }}">
             {{ picture.picture_date }}
+            <img src="{{ picture.picture_file.url }}">
             {% if picture.is_cancer %}
                 <img src="https://i.imgur.com/TDj271k.png" />
             {% endif %}

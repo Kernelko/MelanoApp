@@ -7,7 +7,11 @@
 
     <ul>
     {% for mark in all_marks %}
-    <li><a href="{% url 'pics:detail' mark.id %}"> {{ mark.ref }}</a></li>
+    <li>
+        <a href="{% url 'pics:detail' mark.id %}"> {{ mark.ref }}
+        <img src="{{ mark.current_pic.url }}" class = "img-responsive">
+    </a>
+    </li>
     {% endfor %}
     </ul>
 
