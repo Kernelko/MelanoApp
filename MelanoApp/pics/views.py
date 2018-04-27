@@ -20,11 +20,11 @@ class DetailView(generic.DetailView):
 
 class MarkCreate(CreateView):
     model = Mark
-    fields = ['ref', 'loc', 'current_pic']
+    fields = ['ref', 'loc', 'current_pic', 'user', 'picture_date']
 
 class MarkUpdate(UpdateView):
     model = Mark
-    fields = ['ref', 'loc', 'current_pic']
+    fields = ['ref', 'loc', 'current_pic', 'user', 'picture_date']
 
 class MarkDelete(DeleteView):
     model = Mark
