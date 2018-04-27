@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+from django.contrib import auth
 
 app_name = 'pics'
 
@@ -10,6 +11,8 @@ urlpatterns = [
     url(r'^home/$', views.HomeView.as_view(), name="home"),
 
     url(r'^register/$', views.UserFormView.as_view(), name="register"),
+
+    url(r'^login_user/$', views.login_user, name='login_user'),
 
     #/pics/<mark_id>/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(),name='detail'),

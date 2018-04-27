@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 #remember makemigrations (sqlmigrate pics 001 if you want to see SQL) and then migrate
 # Create your models here.
 class Mark(models.Model):
@@ -7,6 +8,7 @@ class Mark(models.Model):
     ref = models.CharField(max_length=250)
     loc= models.CharField(max_length=250)
     current_pic = models.FileField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def get_absolute_url(self):
         return reverse('pics:detail', kwargs = {'pk': self.pk})

@@ -68,3 +68,21 @@ class HomeView(generic.ListView):
     model = Mark
     def get_queryset(self):
         return Mark.objects.all()
+
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                marks = Mark.objects.filter(user=request.user)
+                return render(request, 'pics/index.html', {'marks': marks})
+            else:
+                return render(request, 'pics/home.html', {'error_message': 'Your account has been disabled'})
+        else:
+            return render(request, 'pics/home.html', {'error_message': 'Invalid login'})
+    return render(request, 'pics/home.html')
