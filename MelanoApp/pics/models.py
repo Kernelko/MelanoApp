@@ -9,6 +9,9 @@ class Mark(models.Model):
     loc= models.CharField(max_length=250)
     current_pic = models.FileField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    picture_date= models.DateField()
+    is_cancer = models.BooleanField(default=False)
+
     
     def get_absolute_url(self):
         return reverse('pics:detail', kwargs = {'pk': self.pk})
