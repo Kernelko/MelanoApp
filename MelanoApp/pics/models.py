@@ -8,7 +8,7 @@ class Mark(models.Model):
     ref = models.CharField(max_length=250)
     loc= models.CharField(max_length=250)
     current_pic = models.FileField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,null=True, blank=True, on_delete=models.CASCADE)
     
     def get_absolute_url(self):
         return reverse('pics:detail', kwargs = {'pk': self.pk})
