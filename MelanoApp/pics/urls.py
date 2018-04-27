@@ -7,6 +7,8 @@ urlpatterns = [
     #/pics/
     url(r'^$', views.IndexView.as_view(), name="index"),
 
+    url(r'^home/$', views.HomeView.as_view(), name="home"),
+
     url(r'^register/$', views.UserFormView.as_view(), name="register"),
 
     #/pics/<mark_id>/

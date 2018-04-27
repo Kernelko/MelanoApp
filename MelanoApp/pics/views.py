@@ -63,3 +63,8 @@ class UserFormView(View):
                     return redirect('pics:index')
         return render(request, self.template_name, {'form': form})
         
+class HomeView(generic.ListView):
+    template_name="pics/home.html"
+    model = Mark
+    def get_queryset(self):
+        return Mark.objects.all()
