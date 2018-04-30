@@ -2,14 +2,15 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 import datetime
+from django.http import request
 #remember makemigrations (sqlmigrate pics 001 if you want to see SQL) and then migrate
 # Create your models here.
 class Mark(models.Model):
     """single skin mark that will be observed"""
     ref = models.CharField(max_length=250)
     loc= models.CharField(max_length=250)
-    current_pic = models.FileField(null=True, blank=True)
-    user = models.ForeignKey(User,null=True, blank=True, on_delete=models.CASCADE)
+    current_pic = models.FileField(null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     picture_date= models.DateField(default=datetime.date.today)
     is_cancer = models.BooleanField(default=False)
 

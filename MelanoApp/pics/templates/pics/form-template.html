@@ -5,7 +5,7 @@
                     <span class="text-danger small">{{field.errors}}</span>
                 </div>
                 <label class="control-label col-sm-2"> {{ field.label_tag }}</label>
-                <div class="col-sm-10"> {{ request.user.profile }} </div>
+                <div class="col-sm-10"> {{ request.user.profile_user.username }} </div>
             </div>
 {% endif %}
             <div class="form-group">
