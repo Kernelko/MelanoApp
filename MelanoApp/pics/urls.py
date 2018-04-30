@@ -12,7 +12,9 @@ urlpatterns = [
 
     url(r'^register/$', views.UserFormView.as_view(), name="register"),
 
-    url(r'^login_user/$', views.login_user, name='login_user'),
+    url(r'^login-user/$', views.login_user, name='login-user'),
+
+    url(r'^logout/$', views.logout_user, name='logout-user'),
 
     #/pics/<mark_id>/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(),name='detail'),

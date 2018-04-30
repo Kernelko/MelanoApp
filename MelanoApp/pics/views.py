@@ -3,9 +3,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Mark
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from .forms import UserForm
+
 
 class IndexView(generic.ListView):
     template_name="pics/index.html"
@@ -86,3 +87,8 @@ def login_user(request):
         else:
             return render(request, 'pics/home.html', {'error_message': 'Invalid login'})
     return render(request, 'pics/home.html')
+
+def logout_user(request):
+    logout(request)
+    return render(request, 'pics/home.html')
+
